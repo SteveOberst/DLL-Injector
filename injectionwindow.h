@@ -27,6 +27,8 @@ public:
 private slots:
     void browse_dll_path_click(bool checked);
 
+    void refresh_process_list_click(bool checked);
+
     void inject_click(bool checked);
 
     void process_search_text_changed(const QString &arg1);

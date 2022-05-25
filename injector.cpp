@@ -286,7 +286,9 @@ InjectionResult LoadLibraryInjector::inject(DWORD dwProcId, const char* pDllPath
         return result;
     }
 
-    HANDLE hThread = CreateRemoteThread(hProc, nullptr, NULL, LPTHREAD_START_ROUTINE(LoadLibraryA), pMemBuf, NULL, nullptr);
+    DWORD dwThreadId;
+    LPTHREAD_START_ROUTINE lpLoadLibrary = (LPTHREAD_START_ROUTINE)GetProcAddress(LoadLibraryA("kernel32"), "LoadLibraryA");
+    HANDLE hThread = CreateRemoteThread(hProc, NULL, 0, lpLoadLibrary, pMemBuf, NULL, nullptr);
     if (!hThread)
     {
         VirtualFreeEx(hProc, pMemBuf, NULL, MEM_RELEASE);

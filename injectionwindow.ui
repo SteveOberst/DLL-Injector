@@ -148,7 +148,7 @@
      <string>Method:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButtonRefreshProcList">
     <property name="geometry">
      <rect>
       <x>249</x>

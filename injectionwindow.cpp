@@ -27,6 +27,7 @@ InjectionWindow::InjectionWindow(QWidget *parent)
     ui->comboBoxInjectionModes->connect(ui->comboBoxInjectionModes, SIGNAL(currentIndexChanged(int)), this, SLOT(injection_method_index_changed(int)));
     ui->pushButtonBrowse->connect(ui->pushButtonBrowse, SIGNAL(clicked(bool)), this, SLOT(browse_dll_path_click(bool)));
     ui->pushButtonInject->connect(ui->pushButtonInject, SIGNAL(clicked(bool)), this, SLOT(inject_click(bool)));
+    ui->pushButtonRefreshProcList->connect(ui->pushButtonRefreshProcList, SIGNAL(clicked(bool)), this, SLOT(refresh_process_list_click(bool)));
 
     register_injection_modes(ui, this->injection_method);
 }
@@ -54,6 +55,12 @@ void InjectionWindow::browse_dll_path_click(bool checked)
     QString path = QFileDialog::getOpenFileName(this, "Select a file.", "selection", "*.dll");
     this->pDllPath = path.toStdString();
     ui->lineEditDLLPath->setText(path);
+}
+
+void InjectionWindow::refresh_process_list_click(bool checked)
+{
+    pull_processes();
+    update_process_list();
 }
 
 void InjectionWindow::inject_click(bool checked)
