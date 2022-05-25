@@ -1,2 +1,2 @@
 # DLL-Injector
-DLL Injector supporting manual mapping and LoadLibrary injection
+DLL Injector (x64) supporting manual mapping and LoadLibrary injection
